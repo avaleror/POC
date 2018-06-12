@@ -3,7 +3,7 @@
 
   vars:
     create_user_name: 'testuser1'
-    create_user_password: 'mypassword'
+    create_user_password: 'password@123'
     groups_url: "{{ manageiq.api_url }}/api/groups?expand=resources&attributes=description,href,id&filter[]=description='EvmGroup-user'"
     user_url: "{{ manageiq.api_url }}/api/users"
 
