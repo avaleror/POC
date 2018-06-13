@@ -3,19 +3,19 @@
   hosts: localhost
   connection: local
   vars:
-    resource_group: {{resource_group}}
-    vm_name: {{vm_name}}
-    location: westeurope
+    resource_group: "{{ resource_group }}"
+    net_name: "{{ net_name }}"
+    location: northeurope
    
   tasks:
   - name: Create virtual network
     azure_rm_virtualnetwork:
       resource_group: "{{ resource_group }}"
-      name: "{{ vm_name }}"
+      name: "{{ net_name }}"
       address_prefixes: "10.0.0.0/16"
   - name: Add subnet
     azure_rm_subnet:
       resource_group: "{{ resource_group }}"
-      name: "{{ vm_name }}"
+      name: "{{ net_name }}"
       address_prefix: "10.0.1.0/24"
-      virtual_network: "{{ vm_name }}"
+      virtual_network: "{{ net_name }}"
