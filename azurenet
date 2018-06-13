@@ -13,6 +13,7 @@
       resource_group: "{{ resource_group }}"
       name: "{{ net_name }}"
       address_prefixes: "10.0.0.0/16"
+      
   - name: Add subnet
     azure_rm_subnet:
       resource_group: "{{ resource_group }}"
