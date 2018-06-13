@@ -3,7 +3,8 @@
 - hosts: localhost
 
   vars:
-    user_url: "{{ manageiq.api_url }}/api/users?expand=resources&attributes=name,href,id&filter[]=name='testuser1'"
+    user_name: 'testuser1'
+    user_url: "{{ manageiq.api_url }}/api/users?expand=resources&attributes=name,href,id&filter[]=name={{ user_name }}"
 
   tasks:
     - debug: var=manageiq.api_url
