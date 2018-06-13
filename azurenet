@@ -1,3 +1,4 @@
+---
 - name: Create Azure Net and subnet
   hosts: localhost
   connection: local
