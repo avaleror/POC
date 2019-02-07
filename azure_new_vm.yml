@@ -76,9 +76,10 @@
       vm_size: Standard_DS1_v2
       admin_username: "{{ vm_user }}"
       admin_password: "{{ vm_password }}"
+      # ssh key if needed
       network_interfaces: "{{ vm_name }}-eth"
       image:
         offer: CentOS
         publisher: OpenLogic # Maybe it is needed to change this for: Rogue Wave Software
-        sku: '7-CI' # Maybe it is necessary to change this for the concrete version "7.6"
+        sku: '7-CI' # Maybe it is necessary to change this for the concrete version, for instance "7.6"
         version: latest
