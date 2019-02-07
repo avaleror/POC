@@ -6,15 +6,15 @@
   hosts: localhost
   connection: local
   vars:
-    resource_group: vmcreate001
-    vm_name: testvm
-    location: westeurope
-    vm_network: testvm_network
-    vm_subnet: testvm_subnet
-    vm_public_ip: testvm_ip
-    vm_securitygroup: testvm_securitygroup
-    vm_user: azureuser
-    vm_password: Password@123
+    resource_group: "vmcreate001"
+    vm_name: "testvm"
+    location: "westeurope"
+    vm_network: "testvm_network"
+    vm_subnet: "testvm_subnet"
+    vm_public_ip: "testvm_public_ip"
+    vm_securitygroup: "testvm_securitygroup"
+    vm_user: "azureuser"
+    vm_password: "Password@123"
     
   tasks:
   - name: Create a resource group
