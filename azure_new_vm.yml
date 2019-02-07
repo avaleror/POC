@@ -77,6 +77,6 @@
       network_interfaces: "{{ vm_name }}-eth"
       image:
         offer: CentOS
-        publisher: OpenLogic
+        publisher: OpenLogic # Maybe it is needed to change this for: Rogue Wave Software
         sku: '7-CI'
         version: latest
