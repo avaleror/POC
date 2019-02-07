@@ -9,6 +9,11 @@
     resource_group: vmcreate001
     vm_name: testvm
     location: westeurope
+    vm_network: testvm_network
+    vm_subnet: testvm_subnet
+    vm_public_ip: testvm_ip
+    vm_securitygroup: testvm_securitygroup
+    
   tasks:
   - name: Create a resource group
     azure_rm_resourcegroup:
@@ -17,24 +22,24 @@
   - name: Create virtual network
     azure_rm_virtualnetwork:
       resource_group: "{{ resource_group }}"
-      name: "{{ vm_name }}"
+      name: "{{ vm_network }}"
       address_prefixes: "10.0.0.0/16"
   - name: Add subnet
     azure_rm_subnet:
       resource_group: "{{ resource_group }}"
-      name: "{{ vm_name }}"
+      name: "{{ vm_subnet }}"
       address_prefix: "10.0.1.0/24"
-      virtual_network: "{{ vm_name }}"
+      virtual_network: "{{ vm_network }}"
   - name: Create public IP address
     azure_rm_publicipaddress:
       resource_group: "{{ resource_group }}"
       allocation_method: Static
-      name: "{{ vm_name }}"
+      name: "{{ vm_public_ip }}"
       domain_name_label: "{{ vm_name }}-00121"
   - name: Create Network Security Group that allows SSH
     azure_rm_securitygroup:
       resource_group: "{{ resource_group }}"
-      name: "{{ vm_name }}"
+      name: "{{ vm_securitygroup }}"
       rules:
         - name: SSH
           protocol: Tcp
@@ -51,11 +56,11 @@
   - name: Create virtual network inteface card
     azure_rm_networkinterface:
       resource_group: "{{ resource_group }}"
-      name: "{{ vm_name }}"
-      virtual_network: "{{ vm_name }}"
-      subnet: "{{ vm_name }}"
-      public_ip_name: "{{ vm_name }}"
-      security_group: "{{ vm_name }}"
+      name: "{{ vm_name }}-eth"
+      virtual_network: "{{ vm_network }}"
+      subnet: "{{ vm_subnet }}"
+      public_ip_name: "{{ vm_public_ip }}"
+      security_group: "{{ vm_securitygroup }}"
   - name: Create VM
     azure_rm_virtualmachine:
       resource_group: "{{ resource_group }}"
@@ -63,7 +68,7 @@
       vm_size: Standard_DS1_v2
       admin_username: azureuser
       admin_password: Password@123
-      network_interfaces: "{{ vm_name }}"
+      network_interfaces: "{{ vm_name }}-eth"
       
       image:
         offer: CentOS
