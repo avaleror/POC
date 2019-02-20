@@ -1,5 +1,5 @@
 #
-# Description: This method is used to Customize the RHEV, RHEV PXE, and RHEV ISO Provisioning Request
+# Description: This method is used to Customize the VMware, RHEV, RHEV PXE, and RHEV ISO Provisioning Request
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
